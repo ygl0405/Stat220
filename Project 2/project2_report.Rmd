@@ -1,0 +1,103 @@
+---
+title: "Project 2"
+subtitle: "STATS 220 Semster One 2024"
+author: "yungyu lee"
+output:
+  html_document:
+    code_folding: hide
+    toc: yes
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, message=FALSE, warning=FALSE, error=FALSE, fig.width= 6, fig.height=4)
+library(tidyverse)
+
+csv_file <- "C:/Users/yungyu/Desktop/Stat 220/Project 2/💤 (Responses) - Form responses 1.csv"
+
+sleep_data <- read_csv(csv_file) %>%
+  rename(age=2,
+         occupation=3,
+         average_sleep_per_day=4,
+         sleep_quality=5,
+         bed_go_time=6,
+         energy_level=7,
+         caffine_consumption=8)
+```
+
+```{css echo=FALSE}
+body{
+font-family: comic Sans MS;
+font-size: 12pt;
+}
+pre {
+background-color: #ADD8e6;
+padding: 5px;
+}
+a{
+color: #5ebccf:;
+}
+a:hover{
+color: black;
+}
+
+h1{
+color: #8070FE;
+}
+h2{
+color: #104176;
+}
+
+h3{
+color: #74E0D5;
+}
+
+
+
+```
+## <b>Introduction</b>
+
+In this report, i wanted to explore the relationship between sleep pattern and it's affect on the daily activity. When creating a survey forms for this particular human behaviour i have made the question more general for participant to answer the question. Question are formed in a way which doesn't require many information about participant except answering their age group and working status. Age group and working status was required question for me as i wanted to investigate how sleep time have impact on daily activities at work place or school. Although selection of  occupation in question 2 isn't specifically narrowed down 2 occupation(student and worker), the list of occupation is sufficient for analysis of students and workers. The introduction at the start of survey announces that data collected are anonymous and will be only seen for course lecturer and tutors. This insures the participants safety and makes it easier to contribute the survey. For each question i have made sure the questions response required. Question 4 and 5 were made for the response to change over the weeks. As my main target audience was full-time workers and student consumption of caffeinated beverages would increase during exam-time or busy period. Which would relate to change of response in question 3.
+
+* Link to my form: <mark>https://forms.gle/xzMQBYzDeyph9Rji8</mark>
+
+## <b>Analytics</b>
+
+Three static statement:
+
+1. Caffeinated drinks don't affect the time going to bed.
+2. Age group between 20's tend to sleep more than age group of 40-50's.
+3. Unemployed and student occupation groups tends to have higher sleep quality.
+
+
+```{r pressure, echo=FALSE}
+
+## 2 bar charts and 2 summary values
+
+ggplot(data= sleep_data,aes(x= caffine_consumption, fill = bed_go_time))+
+  geom_bar(width = .60, position = "dodge")+
+  labs(title= "Caffeinated",
+       subtitle= "Comparing caffine consumption and time going to bed")
+
+
+ggplot(data= sleep_data)+
+  geom_bar(aes(x= sleep_quality, fill = occupation))+
+  facet_wrap(~occupation)+
+  ggtitle("Studying different occupation sleep satisfactory")
+
+# 2 summary values
+
+#average sleep quality
+paste("The average sleep quality is",sum(sleep_data$sleep_quality)/ length(sleep_data$sleep_quality))
+
+#average consumption of caffinated beverage
+paste("The average consumption of caffinated beverage is",sum(sleep_data$caffine_consumption)/ length(sleep_data$caffine_consumption) %>% round(1) )
+```
+
+
+## <b>Creativity</b>
+* In making bar plot for looking into relationship between caffeine consumption and it's affect on time people going to be, i have used dodge function to have the condition stacked against each other to clearly see the relationship between the each variables. I have decreased the size of bar plot with width = .60 to make the plot easy to visualize. As for making bar plot for looking into relationship between the occupation and their sleep quality. I used function facet_wrap, which separates the categorical variable into each different plot. Allowing to demonstrate how each different occupation rated their sleep_quality.  
+
+
+## <b>Learning reflection</b>
+* When doing this project, the idea of designing forms for data collection and visualizing data with ggplot2 appealed as important concept from the module. For data collection selecting appropriate method for gathering information required for the purpose of the data collection. Good forms projected clear language with precise question, asking relevant question to gain response for better analysis. Ensuring data validation and providing clear instructions for the participant. For visualizing data with ggplot was interesting to learn idea of presenting values in different plots. I want to search more into the {tidyverse}  package and check out different method of presenting data analysis
