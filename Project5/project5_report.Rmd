@@ -1,0 +1,81 @@
+---
+title: "Project 5"
+subtitle: "Creating data from digital sources"
+author: "yungyu lee"
+output:
+  html_document:
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, message=FALSE, warning=FALSE, error=FALSE)
+library(tidyverse)
+library(rvest)
+```
+
+```{css echo=FALSE}
+body{
+font-family: comic Sans MS;
+font-size: 12pt;
+}
+pre {
+background-color: #ADD8e6;
+padding: 5px;
+}
+a{
+color: #5ebccf:;
+}
+a:hover{
+color: red;
+}
+
+h1{
+color: #104176;
+}
+h2{
+color: #104176;
+}
+
+h3{
+color: skyblue;
+}
+```
+## Part A
+* My choice of datat context is exploration of weather data for specific city in New zealand
+
+* I have chosen this data context to have insight into climate patterns and help predict future weather conditions. 
+
+```{r file='partA.R'}
+
+```
+##  Part B
+
+```{r file='partB.R', results='hide'}
+
+```
+
+* The mean count of word length for minister's releases in title have length of `r mean_word_length_title`
+
+* The mean count of word length for minister's releases content have length of `r mean_word_length_content`
+
+* Out of all the minister's release content's the top 10 most used word in the content are "`r top_words_use_content`"
+
+* Based on the minister's release content, count of unique word in the release content is `r unique_word_release_content`
+
+
+
+## Part C
+```{r file='partC.R'}
+
+```
+
+* Plot for visualization shows the count of speeches given yearly, colored with different color of keywords
+
+
+## Learning reflection 
+* Upon doing this assignment, one important idea I learned from the course was identifying and extracting appropriate elements from the web source. Understanding the key elements required for the purpose of data context to gather needed data seemed like an like an important factor in web scraping. Alongside collecting appropriate elements, carefully choosing a source for web scraping was another idea from the module. Paying attention to the policies and guides provided by the web source is important. When doing web scrapping, I was interested in learning more about web scrapping tools from other programs, such as Python and Node.js, to extract data from HTML documents on websites.
+
+## Self review    
+* My ability to program with R has improved significantly over the course. Two skills that I have developed are data manipulation and data visualization. Through understanding different packages such as {tidyverse} and {rvest}, I'm able to widen my expression to include much more variables. Techniques such as extracting information from the strings, simple mathematical operations, and learning different types of joins (inner, left, and right) to combine datasets. I'm confident in data visualization from using {tidyverse} and {magick} packages. Formatting different visualizations through the use of many geom functions and image processing through {magick} functions are key skills I learned from the projects.
+
+
